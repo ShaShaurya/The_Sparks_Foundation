@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Money Transfer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin:  30px auto 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1{
+            font-size: 50px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-right: 50px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #29b937;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 40px;">
+        <h1>Customer List</h1>
+    </div>    
+    <div id="buttonList" class="container">
+        <a href="Customer.html">
+            <button id="button1">Customer 1</button><br><br>
+            <button id="button2">Customer 2</button><br><br>
+            <button id="button3">Customer 3</button><br><br>
+            <button id="button4">Customer 4</button><br><br>
+            <button id="button5">Customer 5</button><br><br>            
+            <button id="button6">Customer 6</button><br><br>
+            <button id="button7">Customer 7</button><br><br>
+            <button id="button8">Customer 8</button><br><br>
+            <button id="button9">Customer 9</button><br><br>
+            <button id="button10">Customer 10</button>
+        </a>
+    </div>
+    <script>
+        // Function to handle button clicks using event delegation
+        function handleButtonClick(event) {
+            if (event.target.tagName === 'BUTTON') {
+                const clickedButtonId = event.target.id;
+                // Store the clicked button's ID in localStorage
+                localStorage.setItem("lastClickedButton", clickedButtonId);
+            }
+        }
+        // Add a single click event listener to the button list
+        document.getElementById("buttonList").addEventListener("click", handleButtonClick);
+
+        // Retrieve and display the last clicked button from localStorage
+        const lastClickedButton = localStorage.getItem("lastClickedButton");
+    </script>
+</body>
+</html>

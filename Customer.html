@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Money Transfer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 435px;
+            margin:  70px auto 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1{
+            font-size: 50px;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #29b937;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 40px;">
+        <h1 id="pageHeading">Customer Dashboard</h1>
+        <a href="ViewAllCustomers.html">
+        <button style="width: 400px;">View all Customers</button>
+        </a>
+    </div>
+    <div class="container">
+        <h2>Money Transfer</h2>
+        <b><label for="fromAccount">Balance:</label></b>
+        <div id="yourBalance"></div><br>
+        <b><label for="toAccount">Recipient:</label></b>
+        <select id="recipient">
+            <option value="Customer1">Customer 1</option>
+            <option value="Customer2">Customer 2</option>
+            <option value="Customer3">Customer 3</option>
+            <option value="Customer4">Customer 4</option>
+            <option value="Customer5">Customer 5</option>
+            <option value="Customer6">Customer 6</option>
+            <option value="Customer7">Customer 7</option>
+            <option value="Customer8">Customer 8</option>
+            <option value="Customer9">Customer 9</option>
+            <option value="Customer10">Customer 10</option>
+        </select>
+        <br><br>
+        <b><label for="amount">Transfer Amount:</label></b>
+        <input type="number" id="amount" placeholder="Enter amount" style="width: 413px;">
+        <button onclick="transferMoney()">Transfer</button>
+        <h2 style="margin-top: 50px;">Last 10 Transactions</h2>
+        <ul id="transactionHistory"></ul>
+    </div>
+
+    <script>
+        let yourBalance = 1000;
+        
+        // Define a function to initialize the Customers object
+        function initializeCustomers() {
+        
+            // Try to retrieve the Customers object from local storage
+            const storedCustomers = localStorage.getItem("CustomersData");
+            
+            // Check if the Customers object exists in local storage
+            if (storedCustomers) {
+                // If it exists, parse it from JSON and use it
+                return JSON.parse(storedCustomers);
+            } else {
+            // If it doesn't exist, initialize an empty Customers object
+            return {
+                Customer1: { name: "Customer 1", balance: 500 },
+                Customer2: { name: "Customer 2", balance: 700 },
+                Customer3: { name: "Customer 3", balance: 300 },
+                Customer4: { name: "Customer 4", balance: 900 },
+                Customer5: { name: "Customer 5", balance: 1200 },
+                Customer6: { name: "Customer 6", balance: 450 },
+                Customer7: { name: "Customer 7", balance: 800 },
+                Customer8: { name: "Customer 8", balance: 600 },
+                Customer9: { name: "Customer 9", balance: 1100 },
+                Customer10: { name: "Customer 10", balance: 750 }
+                };
+            }
+        }
+    
+        // Initialize the Customers object
+        const Customers = initializeCustomers();
+
+        const sender = "Customer1";
+        let transactionHistory = [];
+
+        console.log(Customers);
+
+        function transferMoney() {
+            const recipient = document.getElementById("recipient").value;
+            const amount = parseFloat(document.getElementById("amount").value);
+
+            if (!isNaN(amount) && amount > 0 && amount <= yourBalance) {
+                yourBalance -= amount;
+                Customers[recipient].balance += amount;
+                Customers[sender].balance -= amount;
+                var newBalSender = Customers[sender].balance;
+                var existing = 
+
+                // Add the new transaction to the history
+                const transaction = `Transaction of amount $${amount} was made to ${Customers[recipient].name} Date and Time: ${getCurrentDateTime()}`;
+                transactionHistory.unshift(transaction); // Add to the beginning of the array
+
+                // Update the displayed balances and transaction history
+                document.getElementById("yourBalance").innerHTML = `$${yourBalance}`;
+                updateTransactionHistory();
+
+                document.getElementById("amount").value = ""; // Clear the input field
+
+                } else {
+                alert("Invalid amount or insufficient balance.");
+            }
+        }
+
+        // Function to get the current date and time
+        function getCurrentDateTime() {
+            const now = new Date();
+            const formattedDate = now.toISOString().replace("T", " ").split(".")[0];
+            return formattedDate;
+        }
+
+        // Function to update the transaction history displayed
+        function updateTransactionHistory() {
+            const transactionList = document.getElementById("transactionHistory");
+            transactionList.innerHTML = ""; // Clear the list
+
+            // Display the last 10 transactions
+            for (let i = 0; i < 10 && i < transactionHistory.length; i++) {
+                const listItem = document.createElement("li");
+                listItem.textContent = transactionHistory[i];
+                transactionList.appendChild(listItem);
+            }
+        }
+        
+        function hideOptionBasedOnLastClicked() {
+            const dropdown = document.getElementById("recipient");
+
+            // Remove or disable the specific option based on the last clicked button
+            switch(lastClickedButton){
+                case "button1":
+                    document.getElementById("pageHeading").innerHTML = "You are Customer 1"
+                    dropdown.querySelector('option[value="Customer1"]').remove();
+                    yourBalance = Customers.Customer1.balance;
+                    document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
+                    sender = "Customer1";
+                    break;
+                case "button2":
+                    document.getElementById("pageHeading").innerHTML = "You are Customer 2"
+                    dropdown.querySelector('option[value="Customer2"]').remove();
+                    yourBalance = Customers.Customer2.balance;
+                    document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
+                    sender = "Customer2";
+                    break;
+                case "button3":
+                    document.getElementById("pageHeading").innerHTML = "You are Customer 3"
+                    dropdown.querySelector('option[value="Customer3"]').remove();
+                    yourBalance = Customers.Customer3.balance;
+                    document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
+                    sender = "Customer3";
+                    break;
+                case "button4":
+                    document.getElementById("pageHeading").innerHTML = "You are Customer 4"
+                    dropdown.querySelector('option[value="Customer4"]').remove();
+                    yourBalance = Customers.Customer4.balance;
+                    document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
+                    sender = "Customer4";
+                    break;
+                case "button5":
+                    document.getElementById("pageHeading").innerHTML = "You are Customer 5"
+                    dropdown.querySelector('option[value="Customer5"]').remove();
+                    yourBalance = Customers.Customer5.balance;
+                    document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
+                    sender = "Customer5";
+                    break;
+                case "button6":
+                    document.getElementById("pageHeading").innerHTML = "You are Customer 6"
+                    dropdown.querySelector('option[value="Customer6"]').remove();
+                    yourBalance = Customers.Customer6.balance;
+                    document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
+                    sender = "Customer6";
+                    break;
+                case "button7":
+                    document.getElementById("pageHeading").innerHTML = "You are Customer 7"
+                    dropdown.querySelector('option[value="Customer7"]').remove();
+                    yourBalance = Customers.Customer7.balance;
+                    document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
+                    sender = "Customer7";
+                    break;
+                case "button8":
+                    document.getElementById("pageHeading").innerHTML = "You are Customer 8"
+                    dropdown.querySelector('option[value="Customer8"]').remove();
+                    yourBalance = Customers.Customer8.balance;
+                    document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
+                    sender = "Customer8";
+                    break;
+                case "button9":
+                    document.getElementById("pageHeading").innerHTML = "You are Customer 9"
+                    dropdown.querySelector('option[value="Customer9"]').remove();
+                    yourBalance = Customers.Customer9.balance;
+                    document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
+                    sender = "Customer9";
+                    break;
+                case "button10":
+                    document.getElementById("pageHeading").innerHTML = "You are Customer 10"
+                    dropdown.querySelector('option[value="Customer10"]').remove();
+                    yourBalance = Customers.Customer10.balance;
+                    document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
+                    sender = "Customer10";
+                    break;
+            }
+        }
+
+        // Initialize the last clicked button and hide the corresponding option
+        const lastClickedButton = localStorage.getItem("lastClickedButton");
+        if (lastClickedButton) {
+            hideOptionBasedOnLastClicked();
+        }
+    </script>
+</body>
+</html>
