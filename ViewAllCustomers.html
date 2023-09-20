@@ -1,27 +1,127 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Money Transfer</title>
+    <title>Customer Information</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        h1{
+            position: absolute;
+            transform: translateY(-50%);
+            width: 100%;
+            text-align: center;
+            letter-spacing: 1rem;
+            text-transform: uppercase;
+            color: black;
+            font-size: 5em;
+            font-family: sans-serif;
+        }
+        h1 span{
+            display: inline-block;
+            animation: animate 1s  ease-in-out;
+        }
+        @keyframes animate{
+            0%{
+                opacity: 0;
+                transform: rotateY(180deg);
+                filter: blur(10px);
+            }
+            100%{
+                opacity: 1;
+                transform: rotateY(0deg);
+                filter: blur(0px);
+            }
+        }
+        h1 span:nth-child(1)
+        {
+            animation-delay: 1s;
+        }
+        h1 span:nth-child(2)
+        {
+            animation-delay: 1.5s;
+        }
+        h1 span:nth-child(3)
+        {
+            animation-delay: 2s;
+        }
+        h1 span:nth-child(4)
+        {
+            animation-delay: 2.5s;
+        }
+        h1 span:nth-child(5)
+        {
+            animation-delay: 3s;
+        }
+        h1 span:nth-child(6)
+        {
+            animation-delay: 3.5s;
+        }   
+        h1 span:nth-child(7)
+        {
+            animation-delay: 4s;
+        }
+        h1 span:nth-child(8)
+        {
+            animation-delay: 4.5s;
+        }
+        h1 span:nth-child(10)
+        {
+            animation-delay: 1s;
+        }
+        h1 span:nth-child(11)
+        {
+            animation-delay: 1s;
+        }
+        h1 span:nth-child(12)
+        {
+            animation-delay: 1.5s;
+        }
+        h1 span:nth-child(13)
+        {
+            animation-delay: 2s;
+        }
+        h1 span:nth-child(14)
+        {
+            animation-delay: 2.5s;
+        }
+        h1 span:nth-child(16)
+        {
+            animation-delay: 3s;
+        }   
+        h1 span:nth-child(17)
+        {
+            animation-delay: 3.5s;
+        }
+        h1 span:nth-child(18)
+        {
+            animation-delay: 4s;
+        }
+        h1 span:nth-child(19)
+        {
+            animation-delay: 4.5s;
+        }
+        h1 span:nth-child(20)
+        {
+            animation-delay: 4.5s;
         }
         .container {
-            max-width: 400px;
-            margin:  30px auto 0;
-            padding: 20px;
+            max-width: 980px;
+            margin:  50px auto 0;
+            margin-top: 150px;
+            padding: 0px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 50px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            min-height: 230px;
+            max-height: 930px;
         }
         h1{
             font-size: 50px;
+            margin-top: 20px;
         }
         button {
-            width: 100%;
+            width: 600px;
+            height: 50px;
             padding: 10px;
-            margin-right: 50px;
             background-color: #3498db;
             color: #fff;
             border: none;
@@ -32,40 +132,239 @@
         button:hover {
             background-color: #29b937;
         }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center; 
+        }
+        table {
+            margin: 0 auto; /* Center the table horizontally */
+            width: 80%; /* Set a width for the table */
+            border-collapse: collapse;
+            background-color: #62abdf; /* Blue background color */
+            color: white; /* Text color for table headers and data */
+        }
+        th, td {
+            border: 1px solid #fff; /* White border for table cells */
+            padding: 20px;
+            text-align: center;
+        }
+        th {
+            background-color: #0f86db; /* Darker shade of blue for table header */
+        }
+        tr:hover {
+            background-color: #3498db; /* Hover color for rows */
+        }
+        a1{
+  display: block;
+  width: 500px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: white;
+  border:none;
+  letter-spacing: 1px;
+  text-align: center;
+  position: relative;
+  transition: all .35s;
+  background: #3498db;
+  border-radius: 10px;
+  margin-left: 250px;
+}
+
+a1 span{
+  position: relative;
+  z-index: 2;
+}
+a1:before{
+    content: "HOME PAGE";
+}
+a1:after{
+  position: absolute;
+  content: "HOME PAGE =>";
+  top: 0;
+  right: 100%;
+  width: 0;
+  height: 100%;
+  background: #29b937;
+  transition: all .35s;
+  border-radius: 10px;
+  opacity: 0;
+}
+
+a1:hover{
+  color: #fff;
+}
+
+a1:hover:after{
+    right: 0;
+  width: 100%;
+  opacity: 1;
+}
+a2{
+  display: block;
+  width: 500px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: white;
+  border:none;
+  letter-spacing: 1px;
+  text-align: center;
+  position: relative;
+  transition: all .35s;
+  background: #3498db;
+  border-radius: 10px;
+  margin-left: 250px;
+  margin-bottom: 200px;
+}
+
+a2 span{
+  position: relative;
+  z-index: 2;
+}
+a2:before{
+    content: "TRANSFER MONEY BETWEEN CUSTOMERS";
+}
+a2:after{
+  position: absolute;
+  content: "TRANSFER MONEY BETWEEN CUSTOMERS =>";
+  top: 0;
+  right: 100%;
+  width: 0;
+  height: 100%;
+  background: #29b937;
+  transition: all .35s;
+  border-radius: 10px;
+  opacity: 0;
+}
+
+a2:hover{
+  color: #fff;
+}
+
+a2:hover:after{
+    right: 0;
+  width: 100%;
+  opacity: 1;
+}
     </style>
 </head>
 <body>
-    <div style="text-align: center; margin-top: 40px;">
-        <h1>Customer List</h1>
-    </div>    
-    <div id="buttonList" class="container">
-        <a href="Customer.html">
-            <button id="button1">Customer 1</button><br><br>
-            <button id="button2">Customer 2</button><br><br>
-            <button id="button3">Customer 3</button><br><br>
-            <button id="button4">Customer 4</button><br><br>
-            <button id="button5">Customer 5</button><br><br>            
-            <button id="button6">Customer 6</button><br><br>
-            <button id="button7">Customer 7</button><br><br>
-            <button id="button8">Customer 8</button><br><br>
-            <button id="button9">Customer 9</button><br><br>
-            <button id="button10">Customer 10</button>
-        </a>
+    <h1>
+        <span>C</span>
+        <span>U</span>
+        <span>S</span>
+        <span>T</span>
+        <span>O</span>
+        <span>M</span>
+        <span>E</span>
+        <span>R</span>
+        <br>
+        <span>I</span>
+        <span>N</span>
+        <span>F</span>
+        <span>O</span>
+        <span>R</span>
+        <span>M</span>
+        <span>A</span>
+        <span>T</span>
+        <span>I</span>
+        <span>O</span>
+        <span>N</span>
+        <br>
+        <span></span>
+        <br>
+        <span></span>
+        <br>
+        <span></span>
+    </h1>
+    <div class="container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email Address</th>
+            <th>Home Address</th>
+            <th>Phone Number</th>
+        </tr>
+        <tr>
+            <td>John Doe</td>
+            <td>johndoe@example.com</td>
+            <td>123 Main St, Cityville</td>
+            <td>(123) 456-7890</td>
+        </tr>
+        <tr>
+            <td>Jane Smith</td>
+            <td>janesmith@example.com</td>
+            <td>456 Elm St, Townsville</td>
+            <td>(456) 789-1234</td>
+        </tr>
+        <tr>
+            <td>Mary Johnson</td>
+            <td>maryjohnson@example.com</td>
+            <td>789 Oak St, Villageton</td>
+            <td>(789) 123-4567</td>
+        </tr>
+        <tr>
+            <td>Michael Brown</td>
+            <td>michaelbrown@example.com</td>
+            <td>101 Pine St, Hillside</td>
+            <td>(101) 234-5678</td>
+        </tr>
+        <tr>
+            <td>Lisa Williams</td>
+            <td>lisawilliams@example.com</td>
+            <td>246 Maple St, Countryside</td>
+            <td>(246) 345-6789</td>
+        </tr>
+        <tr>
+            <td>David Lee</td>
+            <td>davidlee@example.com</td>
+            <td>369 Cedar St, Suburbia</td>
+            <td>(369) 456-7890</td>
+        </tr>
+        <tr>
+            <td>Susan Miller</td>
+            <td>susanmiller@example.com</td>
+            <td>555 Birch St, Riverside</td>
+            <td>(555) 567-8901</td>
+        </tr>
+        <tr>
+            <td>Robert Taylor</td>
+            <td>roberttaylor@example.com</td>
+            <td>777 Willow St, Parkville</td>
+            <td>(777) 678-9012</td>
+        </tr>
+        <tr>
+            <td>Karen Anderson</td>
+            <td>karenanderson@example.com</td>
+            <td>888 Elm St, Lakeside</td>
+            <td>(888) 789-0123</td>
+        </tr>
+        <tr>
+            <td>Richard Harris</td>
+            <td>richardharris@example.com</td>
+            <td>999 Oak St, Mountainview</td>
+            <td>(999) 890-1234</td>
+        </tr>
+    </table>
+    <br><br>
+    <a href="Home.html">
+        <a1>
+            <span></span>
+        </a1>
+    </a>
+    <br><br>
+    <a href="MonetTransfer.html">
+        <a2>
+            <span></span>
+        </a2>
+    </a>
+    <br><br>
     </div>
-    <script>
-        // Function to handle button clicks using event delegation
-        function handleButtonClick(event) {
-            if (event.target.tagName === 'BUTTON') {
-                const clickedButtonId = event.target.id;
-                // Store the clicked button's ID in localStorage
-                localStorage.setItem("lastClickedButton", clickedButtonId);
-            }
-        }
-        // Add a single click event listener to the button list
-        document.getElementById("buttonList").addEventListener("click", handleButtonClick);
-
-        // Retrieve and display the last clicked button from localStorage
-        const lastClickedButton = localStorage.getItem("lastClickedButton");
-    </script>
+</div>
 </body>
 </html>

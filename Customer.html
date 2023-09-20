@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Money Transfer</title>
+    <title>Money Transfer Dashboard</title>
     <style>
         body {
             font-family: Arial, sans-serif;
         }
         .container {
             max-width: 435px;
-            margin:  70px auto 0;
+            margin:  50px auto 0;
             padding: 20px;
             border: 1px solid #ddd;
             border-radius: 50px;
@@ -49,8 +49,16 @@
 <body>
     <div style="text-align: center; margin-top: 40px;">
         <h1 id="pageHeading">Customer Dashboard</h1>
+        <a href="Home.html">
+            <button style="width: 400px;">Home</button>
+        </a>
+        <br><br>
         <a href="ViewAllCustomers.html">
-        <button style="width: 400px;">View all Customers</button>
+            <button style="width: 400px;">View all Customers</button>
+        </a>
+        <br><br>
+        <a href="MonetTransfer.html">
+            <button style="width: 400px;">Tranfer Money between Customers</button>
         </a>
     </div>
     <div class="container">
@@ -59,16 +67,16 @@
         <div id="yourBalance"></div><br>
         <b><label for="toAccount">Recipient:</label></b>
         <select id="recipient">
-            <option value="Customer1">Customer 1</option>
-            <option value="Customer2">Customer 2</option>
-            <option value="Customer3">Customer 3</option>
-            <option value="Customer4">Customer 4</option>
-            <option value="Customer5">Customer 5</option>
-            <option value="Customer6">Customer 6</option>
-            <option value="Customer7">Customer 7</option>
-            <option value="Customer8">Customer 8</option>
-            <option value="Customer9">Customer 9</option>
-            <option value="Customer10">Customer 10</option>
+            <option value="Customer1">Customer 1: John Doe</option>
+            <option value="Customer2">Customer 2: Jane Smith</option>
+            <option value="Customer3">Customer 3: Mary Johnson</option>
+            <option value="Customer4">Customer 4: Michael Brown</option>
+            <option value="Customer5">Customer 5: Lisa Williams</option>
+            <option value="Customer6">Customer 6: David Lee</option>
+            <option value="Customer7">Customer 7: Susan Miller</option>
+            <option value="Customer8">Customer 8: Robert Taylor</option>
+            <option value="Customer9">Customer 9: Karen Anderson</option>
+            <option value="Customer10">Customer 10: Richard Harris</option>
         </select>
         <br><br>
         <b><label for="amount">Transfer Amount:</label></b>
@@ -94,16 +102,16 @@
             } else {
             // If it doesn't exist, initialize an empty Customers object
             return {
-                Customer1: { name: "Customer 1", balance: 500 },
-                Customer2: { name: "Customer 2", balance: 700 },
-                Customer3: { name: "Customer 3", balance: 300 },
-                Customer4: { name: "Customer 4", balance: 900 },
-                Customer5: { name: "Customer 5", balance: 1200 },
-                Customer6: { name: "Customer 6", balance: 450 },
-                Customer7: { name: "Customer 7", balance: 800 },
-                Customer8: { name: "Customer 8", balance: 600 },
-                Customer9: { name: "Customer 9", balance: 1100 },
-                Customer10: { name: "Customer 10", balance: 750 }
+                Customer1: { name: "John Doe", balance: 500 },
+                Customer2: { name: "Jane Smith", balance: 700 },
+                Customer3: { name: "Mary Johnson", balance: 300 },
+                Customer4: { name: "Michael Brown", balance: 900 },
+                Customer5: { name: "Lisa Williams", balance: 1200 },
+                Customer6: { name: "David Lee", balance: 450 },
+                Customer7: { name: "Susan Miller", balance: 800 },
+                Customer8: { name: "Robert Taylor", balance: 600 },
+                Customer9: { name: "Karen Anderson", balance: 1100 },
+                Customer10: { name: "Richard Harris", balance: 750 }
                 };
             }
         }
@@ -125,7 +133,8 @@
                 Customers[recipient].balance += amount;
                 Customers[sender].balance -= amount;
                 var newBalSender = Customers[sender].balance;
-                var existing = 
+                var existing = localStorage.getItem(Customers);
+                 
 
                 // Add the new transaction to the history
                 const transaction = `Transaction of amount $${amount} was made to ${Customers[recipient].name} Date and Time: ${getCurrentDateTime()}`;
@@ -168,70 +177,70 @@
             // Remove or disable the specific option based on the last clicked button
             switch(lastClickedButton){
                 case "button1":
-                    document.getElementById("pageHeading").innerHTML = "You are Customer 1"
+                    document.getElementById("pageHeading").innerHTML = "John Doe Dashboard"
                     dropdown.querySelector('option[value="Customer1"]').remove();
                     yourBalance = Customers.Customer1.balance;
                     document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
-                    sender = "Customer1";
+                    //sender = "Customer1";
                     break;
                 case "button2":
-                    document.getElementById("pageHeading").innerHTML = "You are Customer 2"
+                    document.getElementById("pageHeading").innerHTML = "Jane Smith Dashboard"
                     dropdown.querySelector('option[value="Customer2"]').remove();
                     yourBalance = Customers.Customer2.balance;
                     document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
                     sender = "Customer2";
                     break;
                 case "button3":
-                    document.getElementById("pageHeading").innerHTML = "You are Customer 3"
+                    document.getElementById("pageHeading").innerHTML = "Mary Johnson Dashboard"
                     dropdown.querySelector('option[value="Customer3"]').remove();
                     yourBalance = Customers.Customer3.balance;
                     document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
                     sender = "Customer3";
                     break;
                 case "button4":
-                    document.getElementById("pageHeading").innerHTML = "You are Customer 4"
+                    document.getElementById("pageHeading").innerHTML = "Michael Brown Dashboard"
                     dropdown.querySelector('option[value="Customer4"]').remove();
                     yourBalance = Customers.Customer4.balance;
                     document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
                     sender = "Customer4";
                     break;
                 case "button5":
-                    document.getElementById("pageHeading").innerHTML = "You are Customer 5"
+                    document.getElementById("pageHeading").innerHTML = "Lisa Williams Dashboard"
                     dropdown.querySelector('option[value="Customer5"]').remove();
                     yourBalance = Customers.Customer5.balance;
                     document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
                     sender = "Customer5";
                     break;
                 case "button6":
-                    document.getElementById("pageHeading").innerHTML = "You are Customer 6"
+                    document.getElementById("pageHeading").innerHTML = "David Lee Dashboard"
                     dropdown.querySelector('option[value="Customer6"]').remove();
                     yourBalance = Customers.Customer6.balance;
                     document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
                     sender = "Customer6";
                     break;
                 case "button7":
-                    document.getElementById("pageHeading").innerHTML = "You are Customer 7"
+                    document.getElementById("pageHeading").innerHTML = "Susan Miller Dashboard"
                     dropdown.querySelector('option[value="Customer7"]').remove();
                     yourBalance = Customers.Customer7.balance;
                     document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
                     sender = "Customer7";
                     break;
                 case "button8":
-                    document.getElementById("pageHeading").innerHTML = "You are Customer 8"
+                    document.getElementById("pageHeading").innerHTML = "Robert Taylor Dashboard"
                     dropdown.querySelector('option[value="Customer8"]').remove();
                     yourBalance = Customers.Customer8.balance;
                     document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
                     sender = "Customer8";
                     break;
                 case "button9":
-                    document.getElementById("pageHeading").innerHTML = "You are Customer 9"
+                    document.getElementById("pageHeading").innerHTML = "Karen Anderson Dashboard"
                     dropdown.querySelector('option[value="Customer9"]').remove();
                     yourBalance = Customers.Customer9.balance;
                     document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
                     sender = "Customer9";
                     break;
                 case "button10":
-                    document.getElementById("pageHeading").innerHTML = "You are Customer 10"
+                    document.getElementById("pageHeading").innerHTML = "Richard Harris Dashboard"
                     dropdown.querySelector('option[value="Customer10"]').remove();
                     yourBalance = Customers.Customer10.balance;
                     document.getElementById("yourBalance").innerHTML = "$" + yourBalance;
